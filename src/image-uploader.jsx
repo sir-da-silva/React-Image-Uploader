@@ -87,7 +87,9 @@ export class ImageUploader extends Component {
                     {
                         this.images.length < 3 && (<label ref={this.addImageLabel} htmlFor="add-images" >ADD <i className="fa-solid fa-image"></i></label>)
                     }
-                    <button className="upload-images" onClick={this.uploadImages}>UPLOAD <i className="fa-solid fa-upload"></i></button>
+                    {
+                        this.images.length > 0 && (<button className="upload-images" onClick={this.uploadImages}>UPLOAD <i className="fa-solid fa-upload"></i></button>)
+                    }
                 </div>
             </div>
         </Fragment>
@@ -139,8 +141,6 @@ export class ImageUploader extends Component {
 
         this.images.forEach((imageFile, index) => {
             formData.append(`image-${index}`, imageFile)
-            
-            console.log(formData.get(`image-${index}`))
         })
 
         fetch(url, {
