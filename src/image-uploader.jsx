@@ -52,7 +52,7 @@ export class ImageUploader extends Component {
 
     replaceImage(index) {        
         const replaceImageInput = this.replaceImageInput.current // the replace input
-        this.images[index] = replaceImageInput.files[0] // replace the image file
+        this.images[index] = replaceImageInput.files[0] // replace the image file -----------------------------------------------------
         // the DOM section
         const imagesUrlBackup = [...this.state.imagesUrl] // backup the images url
         const fileReader = new FileReader()
@@ -68,7 +68,7 @@ export class ImageUploader extends Component {
     }
 
     removeImage(index) {
-        this.images.splice(index, 1) // remove the image file
+        this.images.splice(index, 1) // remove the image file -----------------------------------------------------------------------------
         // the DOM section
         const imagesUrlBackup = [...this.state.imagesUrl] // backup the images url
         imagesUrlBackup.splice(index, 1) // remove the image url in the backup
