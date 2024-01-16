@@ -85,9 +85,12 @@ body {
     background-color: lightgray;
 }
 
-/* Les autre champs */
-.add-image-button label[for="add-images"] {
-    display: block;
+.buttons {
+    display: flex;
+    column-gap: 10px;
+}
+
+.add-image-button label[for="add-images"], .upload-images {
     font-family: 'Text', Arial, Helvetica, sans-serif;
     font-size: medium;
     text-align: center;
@@ -96,11 +99,12 @@ body {
     border: 1px solid rgba(204, 204, 204, 0.75);
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
 }
 /* le :hover et le :active */
-.add-image-button label[for='add-images']:hover {
+.add-image-button label[for='add-images']:hover, .upload-images:hover {
     background-color: rgba(204, 204, 204, 0.75);
 }
-.add-image-button label[for='add-images']:active {
+.add-image-button label[for='add-images']:active, .upload-images:active {
     background-color: rgba(204, 204, 204, 1);
 }
