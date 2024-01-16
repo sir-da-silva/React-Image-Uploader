@@ -51,19 +51,20 @@ export class ImageUploader extends Component {
     }
 
     replaceImage(index) {        
-        const replaceImageInput = this.replaceImageInput.current // the replace input
-        this.images[index] = replaceImageInput.files[0] // replace the image file -----------------------------------------------------
-        // the DOM section
+        const replaceImageInput = this.replaceImageInput.current // get the replace input
         const imagesUrlBackup = [...this.state.imagesUrl] // backup the images url
         const fileReader = new FileReader()
+
+        replaceImageInput.onchange = (e) => { // 2 when the input changes
+            this.images[index] = replaceImageInput.files[0] // replace the image file
+            fileReader.readAsDataURL(e.target.files[0]) // read the image src
+        }
 
         fileReader.onload = (e) => { // 3 when the reading of the src ends
             imagesUrlBackup[index] = e.target.result // replace the image url in the backup
             this.setState({imagesUrl: imagesUrlBackup}) // replace the state by the backup (render)
         }
-        replaceImageInput.onchange = (e) => { // 2 when the input changes
-            fileReader.readAsDataURL(e.target.files[0]) // read the image src
-        }
+
         replaceImageInput.click() // 1 automatic click to open the input
     }
 
@@ -138,6 +139,8 @@ export class ImageUploader extends Component {
 
         this.images.forEach((imageFile, index) => {
             formData.append(`image-${index}`, imageFile)
+            
+            console.log(formData.get(`image-${index}`))
         })
 
         fetch(url, {
